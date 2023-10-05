@@ -1,3 +1,4 @@
+//Autores: Hary Manuela Suárez y Juan Andrés Torres
 
 package com.mycompany.temporizadores;
 import java.util.Timer;
