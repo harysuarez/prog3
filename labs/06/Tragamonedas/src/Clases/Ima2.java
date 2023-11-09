@@ -1,4 +1,3 @@
-
 package Clases;
 
 import java.util.logging.Level;
@@ -26,4 +25,4 @@ public class Ima2 extends Thread {
         }
     } 
 }
-}
+

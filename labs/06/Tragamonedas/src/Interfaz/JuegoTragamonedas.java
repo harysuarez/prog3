@@ -1,16 +1,16 @@
 package Interfaz;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
+import Clases.Ima1;
+import Clases.Ima2;
+import Clases.Ima3;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.J0ptionPane;
+import javax.swing.JOptionPane;
 
 public class JuegoTragamonedas extends javax.swing.JFrame {
-Ima 1 = imag1;
+Ima1  imag1;
+Ima2  imag2;
+Ima3  imag3;
 
 boolean respuesta1 = false;
 boolean respuesta2 = false;
@@ -59,6 +59,11 @@ boolean respuesta3 = false;
         Detener1.setBackground(new java.awt.Color(255, 255, 102));
         Detener1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Detener1.setText("DETENER");
+        Detener1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Detener1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(Detener1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 90, 30));
 
         imagen3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4.png"))); // NOI18N
@@ -101,12 +106,21 @@ boolean respuesta3 = false;
 
     private void IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarActionPerformed
      int tiempoMilisegundos = 0;
- imag1 = new Ima1(tiempomilisegundos);
- respuesta1 = false;
- iniciar.setEnabled(false);
- imag1.start();
+     imag1 = new Ima1(tiempoMilisegundos);
+     imag2 = new Ima2(tiempoMilisegundos);
+     imag3 = new Ima3(tiempoMilisegundos);
+     respuesta1 = false;
+     Iniciar.setEnabled(false);
+     imag1.start();
+     imag2.start();
+     imag3.start();
      
     }//GEN-LAST:event_IniciarActionPerformed
+
+    private void Detener1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Detener1ActionPerformed
+     imag1.stop();
+     respuesta1 = true;
+    }//GEN-LAST:event_Detener1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,11 +162,24 @@ boolean respuesta3 = false;
     private javax.swing.JButton Detener2;
     private javax.swing.JButton Detener3;
     private javax.swing.JButton Iniciar;
-    private javax.swing.JLabel imagen1;
-    private javax.swing.JLabel imagen2;
-    private javax.swing.JLabel imagen3;
+    public javax.swing.JLabel imagen1;
+    public javax.swing.JLabel imagen2;
+    public javax.swing.JLabel imagen3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+private void comprobarResultado(){
+    if(respuesta1 && respuesta2 && respuesta3){
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex){
+            Logger.getLogger(JuegoTragamonedas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Iniciar.setEnablet(true);
+        if ()
+    }
 }
+
+}
+
