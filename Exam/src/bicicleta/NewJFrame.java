@@ -1,13 +1,18 @@
-
 package bicicleta;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class NewJFrame extends javax.swing.JFrame {
 
-    public NewJFrame() {
-        initComponents();
-    }
-
+ public NewJFrame() {
+ initComponents();
+ }
+ 
+@SuppressWarnings("unchecked")
+private void initComponents() {
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -34,6 +39,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         Pedal2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bicicleta/Sin título.png"))); // NOI18N
         Pedal2.setText("jButton2");
+        Pedal2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Pedal2ActionPerformed(evt);
+            }
+        });
 
         jText1.setText("jTextField1");
         jText1.addActionListener(new java.awt.event.ActionListener() {
@@ -56,6 +66,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel3.setText("BIBICLETA");
 
         jRadioButton2.setText("Manual");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("Automático");
@@ -128,7 +143,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Pedal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pedal1ActionPerformed
-     
+    
     }//GEN-LAST:event_Pedal1ActionPerformed
 
     private void jText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText1ActionPerformed
@@ -140,18 +155,16 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jText2ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-     
+        
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-   
-    public static void main(String args[]) {
-     
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NewJFrame().setVisible(true);
-            }
-        });
-    }
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void Pedal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pedal2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Pedal2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Pedal1;
@@ -165,3 +178,4 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jText2;
     // End of variables declaration//GEN-END:variables
 }
+
