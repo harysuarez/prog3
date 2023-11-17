@@ -21,11 +21,15 @@ public class Cicla extends javax.swing.JFrame {
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (modoAuto) {
+                    simularClick();
+                }
                 tiempo++;
                 actualizarDatos();
             }
         });
-        timer.setInitialDelay(0);
+        tiempo = 0;
+        timer.start();
     }
 
     /**
@@ -54,6 +58,9 @@ public class Cicla extends javax.swing.JFrame {
         metros = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         tiempoTxt = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,6 +125,12 @@ public class Cicla extends javax.swing.JFrame {
 
         jLabel5.setText("Metros");
 
+        metros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                metrosActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("Tiempo");
 
         tiempoTxt.setEditable(false);
@@ -126,6 +139,12 @@ public class Cicla extends javax.swing.JFrame {
                 tiempoTxtActionPerformed(evt);
             }
         });
+
+        jLabel7.setText("m/s");
+
+        jLabel8.setText("m");
+
+        jLabel9.setText("s");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,18 +184,28 @@ public class Cicla extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(vel, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(pedalazos, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(metros, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel6)
-                                    .addGap(32, 32, 32)
-                                    .addComponent(tiempoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tiempoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel9))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(vel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                        .addComponent(pedalazos, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel7))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(47, 47, 47)
+                                            .addComponent(jLabel5)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(metros, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel8))))))))
                 .addGap(106, 106, 106))
         );
         layout.setVerticalGroup(
@@ -189,9 +218,9 @@ public class Cicla extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(clickTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(auto)
-                    .addComponent(manual))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(manual)
+                    .addComponent(auto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Iniciar)
                 .addGap(18, 18, 18)
@@ -199,19 +228,23 @@ public class Cicla extends javax.swing.JFrame {
                     .addComponent(Pedal1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Pedal2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(vel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(vel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(pedalazos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(metros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(metros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(tiempoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tiempoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -226,8 +259,7 @@ public class Cicla extends javax.swing.JFrame {
             Pedal1.setEnabled(false);
             Pedal2.setEnabled(true);
             Contadorclicks = 0;
-            distanciaRecorrida += 2;
-            tiempo++;
+            distanciaRecorrida += 13;
             actualizarDatos();
         }
     }//GEN-LAST:event_Pedal1ActionPerformed
@@ -239,8 +271,7 @@ public class Cicla extends javax.swing.JFrame {
             Pedal2.setEnabled(false);
             Pedal1.setEnabled(true);
             Contadorclicks = 0;
-            distanciaRecorrida += 2;
-            tiempo++;
+            distanciaRecorrida += 13;
             actualizarDatos();
         }
     }//GEN-LAST:event_Pedal2ActionPerformed
@@ -254,6 +285,7 @@ public class Cicla extends javax.swing.JFrame {
             Pedal1.setEnabled(false);
             Pedal2.setEnabled(false);
             modoAuto = true;
+            timer.start();
         }
     }//GEN-LAST:event_autoActionPerformed
 
@@ -273,8 +305,13 @@ public class Cicla extends javax.swing.JFrame {
         if (auto.isSelected()) {
             Pedal1.setEnabled(false);
             Pedal2.setEnabled(false);
+            modoAuto = true;
+        } else {
+            modoAuto = false;
+            Pedal1.setEnabled(true);
+            Pedal2.setEnabled(false);
             timer.start();
-        }
+        }   
     }//GEN-LAST:event_IniciarActionPerformed
 
     private void simularClick() {
@@ -285,6 +322,7 @@ public class Cicla extends javax.swing.JFrame {
         }
         tiempo++;
         tiempoTxt.setText(String.valueOf(tiempo));
+        Pedal1ActionPerformed(null);
 }
 
     
@@ -293,15 +331,19 @@ public class Cicla extends javax.swing.JFrame {
     }//GEN-LAST:event_pedalazosActionPerformed
 
     private void actualizarDatos() {
-        vel.setText(Integer.toString(distanciaRecorrida / tiempo));
-        pedalazos.setText(Integer.toString(ContadorPedal1 + ContadorPedal2));
-        metros.setText(Integer.toString(distanciaRecorrida));
-        tiempoTxt.setText(Integer.toString(tiempo));
+        vel.setText(String.valueOf(distanciaRecorrida / 10));
+        pedalazos.setText(String.valueOf(ContadorPedal1 + ContadorPedal2));
+        metros.setText(String.valueOf(distanciaRecorrida));
+        tiempoTxt.setText(String.valueOf(tiempo));
     }
     
     private void tiempoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tiempoTxtActionPerformed
+
+    private void metrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_metrosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_metrosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -327,6 +369,9 @@ public class Cicla extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton manual;
     private javax.swing.JTextField metros;
     private javax.swing.JTextField pedalazos;
